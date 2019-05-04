@@ -1,0 +1,32 @@
+
+
+insert into player (id, first_name, last_name, position, birthday, team_id) values (1, 'Rahel', 'Brodeur', 'WR', '1995-10-17', null);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (2, 'Niall', 'Darlow', 'FB', '1999-11-04', 6);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (3, 'Bald', 'Parham', 'WR', '1999-06-05', 1);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (4, 'Aurea', 'Deathridge', 'QB', '1998-07-28', 2);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (5, 'Aldwin', 'Boone', 'RB', '1993-03-06', 2);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (6, 'Ericka', 'Dymocke', 'WE', '1997-04-10', 5);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (7, 'Myrilla', 'Dunmore', 'WR', '1999-08-15', 3);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (8, 'Karine', 'Fortnam', 'WE', '1997-03-13', 5);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (9, 'Benjamin', 'Klemke', 'FB', '1994-05-18', 2);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (10, 'Ozzie', 'Trevaskiss', 'FB', '1994-04-02', 5);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (11, 'Verene', 'Fowlestone', 'FB', '1996-01-11', 6);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (12, 'Etan', 'Whiskerd', 'RB', '1991-12-16', 2);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (13, 'Sullivan', 'Stittle', 'P', '1991-06-21', 3);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (14, 'Spike', 'Culley', 'FB', '1993-07-20', 1);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (15, 'Alika', 'Pache', 'K', '1993-11-10', 2);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (16, 'Roxy', 'Van Dijk', 'QB', '1991-03-16', null);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (17, 'Lazar', 'Lilburn', 'K', '1990-10-07', 6);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (18, 'Alasteir', 'Ryding', 'WR', '1995-01-12', 1);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (19, 'Lorrayne', 'Trice', 'K', '2000-02-19', 6);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (20, 'Rolland', 'Pimley', 'QB', '1991-09-11', 3);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (21, 'Meredith', 'Coultas', 'P', '1998-11-17', 6);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (22, 'Carena', 'Epps', 'RB', '1990-10-24', 1);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (23, 'Saleem', 'Hannan', 'FB', '1993-09-19', 3);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (24, 'Marven', 'Tartt', 'QB', '1998-09-04', null);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (25, 'Gertie', 'Dominelli', 'WE', '1997-09-17', 4);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (26, 'Farris', 'Ariss', 'QB', '1995-01-29', 3);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (27, 'Kennith', 'Penkethman', 'RB', '1999-10-24', 4);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (28, 'Harriett', 'Soffe', 'WR', '1999-06-30', 1);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (29, 'Daryn', 'Megroff', 'K', '1993-09-01', 5);
+-- insert into player (id, first_name, last_name, position, birthday, team) values (30, 'Linnell', 'Culter', 'K', '1994-02-21', null);

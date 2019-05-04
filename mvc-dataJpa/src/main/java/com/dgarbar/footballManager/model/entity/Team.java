@@ -1,4 +1,4 @@
-package com.dgarbar.footballManager.entity;
+package com.dgarbar.footballManager.model.entity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.NaturalId;
 
 @NoArgsConstructor
 @Setter
@@ -18,10 +19,11 @@ public class Team {
 	@GeneratedValue
 	private Long id;
 
-	@Column(unique = true, nullable = false)
+	@NaturalId
 	private String name;
 
-	@JoinColumn(name = "captain_player_id")
+	//Eagerly -> Lazy ??
+	@JoinColumn(name = "captain_id")
 	@OneToOne(optional = false)
 	private Player captain;
 
