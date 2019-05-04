@@ -22,9 +22,4 @@ public class PlayerController {
 	public List<Player> getAll(){
 		return playerRepository.findAll();
 	}
-
-	@GetMapping("/get")
-	public Player getAall(){
-		return playerRepository.findAll().get(0);
-	}
 }
