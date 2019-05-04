@@ -2,6 +2,7 @@ package com.dgarbar.footballManager.web.controller;
 
 import com.dgarbar.footballManager.model.dto.PlayerDto;
 import com.dgarbar.footballManager.model.dto.TeamDto;
+import com.dgarbar.footballManager.service.PlayerService;
 import com.dgarbar.footballManager.service.TeamService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/teams")
 public class TeamController {
 
+	private PlayerService playerService;
 	private TeamService teamService;
 
-	public TeamController(TeamService teamService) {
+	public TeamController(PlayerService playerService,
+		TeamService teamService) {
+		this.playerService = playerService;
 		this.teamService = teamService;
 	}
 
@@ -33,13 +37,13 @@ public class TeamController {
 
 	@GetMapping("/{id}/players")
 	public List<PlayerDto> getPlayersByTeam(@PathVariable Long id) {
-		return teamService.getPlayersByTeamId(id);
+		return playerService.getPlayersByTeamId(id);
 	}
 
 
 	@GetMapping("/{id}/captain")
 	public PlayerDto getCaptainByTeam(@PathVariable Long id) {
-		return teamService.getCaptainByTeamId(id);
+		return playerService.getCaptainByTeamId(id);
 	}
 
 
