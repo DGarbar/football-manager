@@ -1,9 +1,6 @@
 package com.dgarbar.footballManager.model.entity;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +13,8 @@ import org.hibernate.annotations.NaturalId;
 public class Team {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name = "team_seq", sequenceName = "team_seq", initialValue = 10, allocationSize = 5)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "team_seq")
 	private Long id;
 
 	@NaturalId

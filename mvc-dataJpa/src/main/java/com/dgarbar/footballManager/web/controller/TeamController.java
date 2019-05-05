@@ -5,11 +5,14 @@ import com.dgarbar.footballManager.model.dto.TeamDto;
 import com.dgarbar.footballManager.service.PlayerService;
 import com.dgarbar.footballManager.service.TeamService;
 import java.util.List;
+import javax.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -48,13 +51,14 @@ public class TeamController {
 
 
 	@PostMapping("/{id}/captain")
-	public void setCaptain(@PathVariable Long id, @RequestBody PlayerDto captain) {
+	public void setCaptain(@PathVariable Long id, @RequestBody @Valid PlayerDto captain) {
 		teamService.assignCaptainToTeam(id,captain);
 	}
 
 	//Mb Patch or Put(but no idempotent ???
 	@PostMapping("/{id}/addPlayer")
-	public void addPlayer(@PathVariable Long id, @RequestBody PlayerDto player) {
+	@ResponseStatus(HttpStatus.CREATED)
+	public void addPlayer(@PathVariable Long id,@Valid @RequestBody PlayerDto player) {
 		playerService.addPlayerToTeam(id,player);
 	}
 
