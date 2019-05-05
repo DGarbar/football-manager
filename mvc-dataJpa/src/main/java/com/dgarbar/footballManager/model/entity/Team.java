@@ -13,8 +13,7 @@ import org.hibernate.annotations.NaturalId;
 public class Team {
 
 	@Id
-	@SequenceGenerator(name = "team_seq", sequenceName = "team_seq", initialValue = 10, allocationSize = 5)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "team_seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NaturalId
@@ -24,6 +23,11 @@ public class Team {
 	@JoinColumn(name = "captain_id")
 	@OneToOne(optional = false)
 	private Player captain;
+
+	public void setCaptain(Player player){
+		player.setTeam(this);
+		captain = player;
+	}
 
 //	@Setter(AccessLevel.PRIVATE)
 //	@OneToMany(mappedBy = "team")

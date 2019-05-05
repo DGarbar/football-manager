@@ -60,11 +60,11 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	public void addPlayerToTeam(Long id, PlayerDto playerDto) {
-		Player playerNew = playerDtoMapper.toEntity(playerDto);
-		Player playerPersisted = playerRepository.save(playerNew);
 		Team team = teamRepository.findById(id)
 			.orElseThrow(EntityExistsException::new);
-		playerPersisted.setTeam(team);
+		Player playerNew = playerDtoMapper.toEntity(playerDto);
+		playerNew.setTeam(team);
+		playerRepository.save(playerNew);
 	}
 }
 

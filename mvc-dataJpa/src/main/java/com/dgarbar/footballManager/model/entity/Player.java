@@ -14,9 +14,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "player")
 public class Player {
+
 	@Id
-	@SequenceGenerator(name = "player_seq", sequenceName = "player_seq", allocationSize = 1 )
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="player_seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "first_name", nullable = false)

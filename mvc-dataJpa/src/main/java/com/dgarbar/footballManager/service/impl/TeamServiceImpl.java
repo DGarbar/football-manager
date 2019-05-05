@@ -48,12 +48,11 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	public void assignCaptainToTeam(Long id, PlayerDto captain) {
+	public void assignCaptainToTeam(Long teamId, PlayerDto captain) {
+		Team team = teamRepository.findById(teamId)
+			.orElseThrow(EntityNotExistException::new);
 		Player player = playerRepository.findById(captain.getId())
 			.orElseThrow(EntityNotExistException::new);
-		Team team = teamRepository.findById(id)
-			.orElseThrow(EntityNotExistException::new);
-
 		team.setCaptain(player);
 	}
 
