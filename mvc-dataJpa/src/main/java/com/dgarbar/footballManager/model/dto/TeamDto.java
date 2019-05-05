@@ -21,6 +21,6 @@ public class TeamDto {
 
 	private PlayerDto captain;
 
-	private List<PlayerDto> playerSet = new ArrayList<>();
+//	private List<PlayerDto> playerSet = new ArrayList<>();
 }
 
