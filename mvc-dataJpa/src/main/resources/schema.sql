@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS player;
-DROP TABLE IF EXISTS team;
+DROP TABLE IF EXISTS player CASCADE ;
+DROP TABLE IF EXISTS team CASCADE ;
 
 CREATE TABLE player(id serial, first_name VARCHAR(255) not null, last_name VARCHAR(255) not null, position VARCHAR(255) not null, birthday date not null, team_id BIGINT, constraint player_PK  PRIMARY KEY (id) );
 
