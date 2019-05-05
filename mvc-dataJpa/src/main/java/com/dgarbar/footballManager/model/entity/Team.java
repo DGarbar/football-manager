@@ -27,23 +27,24 @@ public class Team {
 	@OneToOne(optional = false)
 	private Player captain;
 
-	@Setter(AccessLevel.PRIVATE)
-	@OneToMany(mappedBy = "team")
-	private Set<Player> playerSet = new HashSet<>();
-
-	public void addPlayer(Player player) {
-		playerSet.add(player);
-		player.setTeam(this);
-	}
-
-	public void removePlayer(Player player) {
-		playerSet.remove(player);
-		player.setTeam(null);
-	}
-
-	public void setCaptain(Player player){
-		captain = player;
-		addPlayer(player);
-	}
+//	@Setter(AccessLevel.PRIVATE)
+//	@OneToMany(mappedBy = "team")
+//	private Set<Player> playerSet = new HashSet<>();
+//
+//	public void addPlayer(Player player) {
+//		playerSet.add(player);
+//		player.setTeam(this);
+//	}
+//
+//	public void removePlayer(Player player) {
+//		playerSet.remove(player);
+//		player.setTeam(null);
+//	}
+//
+//	public void setCaptain(Player player){
+//		player.getTeam().removePlayer(player);
+//		captain = player;
+//		addPlayer(player);
+//	}
 
 }

@@ -55,8 +55,16 @@ public class PlayerServiceImpl implements PlayerService {
 	@Transactional(readOnly = true)
 	@Override
 	public List<PlayerDto> getPlayersByTeamId(Long teamId) {
-		Team teamRef = teamRepository.getOne(teamId);
-		List<Player> players = playerRepository.findByTeam(teamRef);
+		List<Player> players = playerRepository.findByTeamId(teamId);
 		return playerDtoMapper.toDtoList(players);
 	}
+
+	public void addPlayerToTeam(Long id, PlayerDto playerDto) {
+		Player playerNew = playerDtoMapper.toEntity(playerDto);
+		Player playerPersisted = playerRepository.save(playerNew);
+		Team team = teamRepository.findById(id)
+			.orElseThrow(EntityExistsException::new);
+		playerPersisted.setTeam(team);
+	}
 }
+

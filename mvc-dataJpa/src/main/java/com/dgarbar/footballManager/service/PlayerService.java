@@ -12,4 +12,6 @@ public interface PlayerService {
 	PlayerDto getCaptainByTeamId(Long teamId);
 
 	List<PlayerDto> getPlayersByTeamId(Long teamId);
+
+	void addPlayerToTeam(Long teamId, PlayerDto playerDto);
 }

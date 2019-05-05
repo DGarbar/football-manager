@@ -11,6 +11,4 @@ public interface TeamService {
 	TeamDto getTeamById(Long id);
 
 	void assignCaptainToTeam(Long id, PlayerDto captain);
-
-	void addPlayerToTeam(Long id, PlayerDto player);
 }

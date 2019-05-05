@@ -5,6 +5,7 @@ import com.dgarbar.footballManager.model.dto.TeamDto;
 import com.dgarbar.footballManager.model.entity.Player;
 import com.dgarbar.footballManager.model.entity.Team;
 import com.dgarbar.footballManager.model.mapper.InnerTeamDtoMapper;
+import com.dgarbar.footballManager.model.mapper.PlayerDtoMapper;
 import com.dgarbar.footballManager.model.mapper.TeamDtoMapper;
 import com.dgarbar.footballManager.repo.PlayerRepository;
 import com.dgarbar.footballManager.repo.TeamRepository;
@@ -22,16 +23,13 @@ public class TeamServiceImpl implements TeamService {
 	private TeamRepository teamRepository;
 
 	private TeamDtoMapper teamDtoMapper;
-	private InnerTeamDtoMapper innerTeamDtoMapper;
 
 	public TeamServiceImpl(PlayerRepository playerRepository,
 		TeamRepository teamRepository,
-		TeamDtoMapper teamDtoMapper,
-		InnerTeamDtoMapper innerTeamDtoMapper) {
+		TeamDtoMapper teamDtoMapper) {
 		this.playerRepository = playerRepository;
 		this.teamRepository = teamRepository;
 		this.teamDtoMapper = teamDtoMapper;
-		this.innerTeamDtoMapper = innerTeamDtoMapper;
 	}
 
 	@Transactional(readOnly = true)
@@ -45,10 +43,9 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	public TeamDto getTeamById(Long id) {
 		return teamRepository.findById(id)
-			.map(innerTeamDtoMapper::toDto)
+			.map(teamDtoMapper::toDto)
 			.orElseThrow(EntityNotExistException::new);
 	}
-
 
 	@Override
 	public void assignCaptainToTeam(Long id, PlayerDto captain) {
@@ -60,8 +57,4 @@ public class TeamServiceImpl implements TeamService {
 		team.setCaptain(player);
 	}
 
-	@Override
-	public void addPlayerToTeam(Long id, PlayerDto player) {
-
-	}
 }

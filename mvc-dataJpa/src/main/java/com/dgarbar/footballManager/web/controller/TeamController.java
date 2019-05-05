@@ -55,7 +55,7 @@ public class TeamController {
 	//Mb Patch or Put(but no idempotent ???
 	@PostMapping("/{id}/addPlayer")
 	public void addPlayer(@PathVariable Long id, @RequestBody PlayerDto player) {
-		teamService.addPlayerToTeam(id,player);
+		playerService.addPlayerToTeam(id,player);
 	}
 
 }

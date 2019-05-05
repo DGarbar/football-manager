@@ -17,4 +17,13 @@ public class PlayerDtoMapper implements DtoMapper<PlayerDto, Player> {
 			.position(player.getPosition())
 			.build();
 	}
+
+	public Player toEntity(PlayerDto playerDto) {
+		Player player = new Player();
+		player.setBirthday(playerDto.getBirthday());
+		player.setFirstName(playerDto.getFirstName());
+		player.setLastName(playerDto.getLastName());
+		player.setPosition(playerDto.getPosition());
+		return player;
+	}
 }

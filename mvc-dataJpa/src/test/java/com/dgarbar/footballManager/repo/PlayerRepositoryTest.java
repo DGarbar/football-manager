@@ -7,6 +7,8 @@ import com.dgarbar.footballManager.config.RootConfig;
 import com.dgarbar.footballManager.config.WebConfig;
 import com.dgarbar.footballManager.model.entity.Player;
 import com.dgarbar.footballManager.model.entity.Team;
+import com.dgarbar.footballManager.service.PlayerService;
+import com.dgarbar.footballManager.service.impl.PlayerServiceImpl;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,17 +24,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class PlayerRepositoryTest {
 
 	@Autowired
+	private PlayerService playerService;
+
+	@Autowired
 	private PlayerRepository playerRepository;
+
 	@Autowired
 	private TeamRepository teamRepository;
 
-	@Test
-	@Commit
-	public void testFindPlayerByReferenceTeam() {
-		Team team = teamRepository.getOne(1L);
-		System.out.println("Not SQL");
-		playerRepository.findByTeam(team)
-			.forEach(player -> System.out.println(player.getId()));
-
-	}
 }

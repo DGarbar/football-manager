@@ -23,14 +23,14 @@ public class InnerTeamDtoMapper implements DtoMapper<TeamDto, Team> {
 			.id(team.getId())
 			.name(team.getName())
 			.captain(getCaptain(team))
-			.playerSet(getPlayers(team))
+//			.playerSet(getPlayers(team))
 			.build();
 	}
 
-	private List<PlayerDto> getPlayers(Team team) {
-		Set<Player> playerSet = team.getPlayerSet();
-		return playerDtoMapper.toDtoList(playerSet);
-	}
+//	private List<PlayerDto> getPlayers(Team team) {
+//		Set<Player> playerSet = team.getPlayerSet();
+//		return playerDtoMapper.toDtoList(playerSet);
+//	}
 
 	private PlayerDto getCaptain(Team team) {
 		return playerDtoMapper.toDto(team.getCaptain());
