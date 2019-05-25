@@ -24,7 +24,8 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
-		servletContext.setInitParameter("spring.profiles.active", "PostgreSQL");
+//		servletContext.setInitParameter("spring.profiles.active", "PostgreSQL");
+		servletContext.setInitParameter("spring.profiles.active", "PostgreSQLDocker");
 //		servletContext.setInitParameter("spring.profiles.active", "h2");
 	}
 }
