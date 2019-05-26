@@ -1,8 +1,7 @@
 package com.dgarbar.footballManager.config;
 
-import java.util.Properties;
 import javax.sql.DataSource;
-import org.postgresql.ds.PGSimpleDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -28,7 +27,6 @@ public class JpaConfig {
 
 	private String databaseName = "footballManagerDB";
 	private String dbUrl = "jdbc:postgresql://localhost:5432/" + databaseName;
-	private String containerDbUrl;
 	private String username = "root";
 	private String password = "root";
 	private Integer port = 5432;
@@ -61,43 +59,26 @@ public class JpaConfig {
 			.withUsername(username)
 			.withPassword(password)
 			.withExposedPorts(port);
-
 		postgreSQLContainer.start();
-		Integer mappedPort = postgreSQLContainer.getMappedPort(port);
-		containerDbUrl = dbUrl.replaceFirst("5432", String.valueOf(mappedPort));
-
 		return postgreSQLContainer;
-
 	}
 
 	@Profile("PostgreSQLDocker")
-	@Bean
 	@DependsOn("postgreSQLContainer")
-	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUrl(containerDbUrl);
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUsername(username);
-		dataSource.setPassword(password);
-
-		Resource initSchema = new ClassPathResource("schema.sql");
-		Resource dataSchema = new ClassPathResource("data.sql");
-		DatabasePopulator initSchemaPopulator = new ResourceDatabasePopulator(initSchema);
-		DatabasePopulator dataSchemaPopulator = new ResourceDatabasePopulator(dataSchema);
-		DatabasePopulatorUtils.execute(initSchemaPopulator, dataSource);
-		DatabasePopulatorUtils.execute(dataSchemaPopulator, dataSource);
-
-//		dataSource.setSchema("schema.sql");
-//		dataSource.setSchema("data.sql");
-		return dataSource;
-	}
-
-
-	@Profile({"PostgreSQL"})
 	@Bean
-	public DataSource dataSourcePostgreSql() {
+	public String containerUrl(PostgreSQLContainer postgreSQLContainer) {
+		Integer mappedPort = postgreSQLContainer.getMappedPort(port);
+		String containerIpAddress = postgreSQLContainer.getContainerIpAddress();
+		return dbUrl.replaceFirst("5432", mappedPort.toString())
+			.replaceFirst("localhost", containerIpAddress);
+	}
+
+	@Profile("!h2")
+	@Bean
+	public DataSource dataSourcePostgreSql(@Autowired(required = false) String containerUrl) {
+		containerUrl = containerUrl == null ? dbUrl : containerUrl;
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUrl(dbUrl);
+		dataSource.setUrl(containerUrl);
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUsername(username);
 		dataSource.setPassword(password);
@@ -115,7 +96,7 @@ public class JpaConfig {
 	}
 
 
-	@Profile({"PostgreSQL","PostgreSQLDocker"})
+	@Profile("!h2")
 	@Bean
 	public JpaVendorAdapter vendorAdapterPostgreSQL() {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
