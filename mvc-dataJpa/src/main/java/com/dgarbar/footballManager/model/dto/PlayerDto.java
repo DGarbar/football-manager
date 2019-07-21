@@ -1,7 +1,6 @@
 package com.dgarbar.footballManager.model.dto;
 
 import com.dgarbar.footballManager.model.entity.Position;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

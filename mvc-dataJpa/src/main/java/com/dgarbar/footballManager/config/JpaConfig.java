@@ -59,6 +59,7 @@ public class JpaConfig {
 			.withUsername(username)
 			.withPassword(password)
 			.withExposedPorts(port);
+//			.withFileSystemBind("D:\\Code\\RestApps\\football-manager\\database_data","/var/lib/postgresql/data");
 		postgreSQLContainer.start();
 		return postgreSQLContainer;
 	}
@@ -76,6 +77,7 @@ public class JpaConfig {
 	@Profile("!h2")
 	@Bean
 	public DataSource dataSourcePostgreSql(@Autowired(required = false) String containerUrl) {
+		//TODO refactor
 		containerUrl = containerUrl == null ? dbUrl : containerUrl;
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUrl(containerUrl);
