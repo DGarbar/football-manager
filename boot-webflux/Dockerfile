@@ -1,11 +1,7 @@
 FROM openjdk:12-alpine
 
-#RUN apt-get update -q \
-# && apt-get upgrade -q -y \
-# && apt-get install -q -y
-
-COPY target/mvc-dataJpa-1.0-SNAPSHOT.war /home/mvc-dataJpa-1.0-SNAPSHOT.war
+COPY target/boot-webflux-0.0.1-SNAPSHOT.jar /home/boot-webflux-0.0.1-SNAPSHOT.jar
 
 EXPOSE 8080
-CMD ["java", "-jar", "/home/hotel-booking-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/home/boot-webflux-0.0.1-SNAPSHOT.jar", "--spring.data.mongodb.uri=mongodb://mongo:27017/test"]
 

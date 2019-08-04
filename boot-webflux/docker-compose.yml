@@ -1,22 +1,19 @@
 version: '3'
 services:
-
-  db:
-    image: postgres
-    restart: always
+  mongo:
+    image: mongo
     volumes:
-      - ./database_data:/var/lib/postgresql/data
+      - 'mongoData:/data/db'
     ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
+      - 27017:27017
 
-  hotel:
-    build:
-      context: ..
-      dockerfile: Dockerfile
+  app:
+    image: myreact
     ports:
       - 8080:8080
     depends_on:
-      - db
+      - mongo
+    links:
+      - mongo
+volumes:
+  mongoData:
